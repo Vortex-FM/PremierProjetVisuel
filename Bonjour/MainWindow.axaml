@@ -23,6 +23,7 @@
         Spacing="12" : 12 pixels d'espace entre chaque élément.
     -->
     <ScrollViewer>
+        <StackPanel>
     <StackPanel Margin="20" Spacing="12" VerticalAlignment="Top" HorizontalAlignment="Center">
 
          
@@ -41,6 +42,13 @@
                 FontSize="22"
                 HorizontalAlignment="Left" />
 
+    </StackPanel>
+    <WrapPanel ItemSpacing="10" HorizontalAlignment="Center">
+    <!-- degrées to farenheit et l'inverse-->
+     <TextBox x:Name="degreeF" Watermark="°F" MinWidth="25" MaxWidth="50" />
+     <TextBlock Text="==" VerticalAlignment="Center" />
+     <TextBox x:Name="degreeC" Watermark="°C" MinWidth="25" MaxWidth="50" />
+    </WrapPanel>
     </StackPanel>
     </ScrollViewer>
 </Window>

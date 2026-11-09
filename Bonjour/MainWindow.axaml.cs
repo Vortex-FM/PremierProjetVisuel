@@ -12,8 +12,10 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Xml.Serialization;
 using Avalonia.Controls;
+using Avalonia.DesignerSupport.Remote;
 using Avalonia.Interactivity;
 using Avalonia.Metadata;
 
@@ -28,7 +30,10 @@ public partial class MainWindow : Window
         // Sans cette ligne, la fenêtre reste vide !
         InitializeComponent();
     }
-    
+    public void ConversionCeliusFarenheit()
+    {
+        
+    }
     
     private void BoutonSaluer_Click(object sender, RoutedEventArgs e)
     {
@@ -39,16 +44,19 @@ public partial class MainWindow : Window
         
         
         string message;
-        if (string.IsNullOrEmpty(prenom)|| string.IsNullOrEmpty(Nom))
+        if (string.IsNullOrEmpty(prenom) || prenom.Length <2 || prenom.Length > 30 || string.IsNullOrEmpty(Nom) || Nom.Length < 2 || Nom.Length > 30 || int.TryParse(prenom,out int i) || int.TryParse(Nom,out int o))
         {
-            message = $"Bonjour, votre nom ou Prénom est invalide.";
+            Foreground = Avalonia.Media.Brushes.Red;
+            message = $"Bonjour, votre nom ou Prénom est invalide.(entre 3 et 30 caractères)";
         }
         else if (naissance is null || naissance.Value.Date > DateTime.Today)
         {
+            Foreground = Avalonia.Media.Brushes.Red;
             message = $"Bonjour, votre année de naissance n'est pas valide.";
         }
         else
         {
+            Foreground = Avalonia.Media.Brushes.Black;
             DateTime datenaissance = naissance.Value.Date;
             DateTime today = DateTime.Today;
             int age = today.Year - datenaissance.Year;

@@ -124,3 +124,4 @@ C:\Users\Formation\FormationLIC\BonjourProjet\Bonjour\obj\Debug\net10.0\refint\B
 C:\Users\Formation\FormationLIC\BonjourProjet\Bonjour\obj\Debug\net10.0\Bonjour.pdb
 C:\Users\Formation\FormationLIC\BonjourProjet\Bonjour\obj\Debug\net10.0\Bonjour.genruntimeconfig.cache
 C:\Users\Formation\FormationLIC\BonjourProjet\Bonjour\obj\Debug\net10.0\ref\Bonjour.dll
+C:\Users\Formation\FormationLIC\BonjourProjet\Bonjour\obj\Debug\net10.0\Bonjour.sourcelink.json
