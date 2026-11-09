@@ -1,0 +1,35 @@
+<!--
+    Bonjour.csproj : le fichier de PROJET.
+    Il indique à "dotnet" comment compiler l'application et quelles
+    bibliothèques (paquets NuGet) télécharger. On le modifie rarement.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- WinExe : une application avec fenêtre (pas une console noire). -->
+    <OutputType>WinExe</OutputType>
+  
+    <!-- La version de .NET utilisée.
+         Attention : elle doit être installée sur l'ordinateur.
+         Le README explique comment vérifier vos versions. -->
+    <TargetFramework>net10.0</TargetFramework>
+
+    <!-- "disable" : désactive une vérification avancée de C# (les types
+         "nullables"). Cela évite d'avoir à écrire des ? et des ! partout
+         dans le code, ce qui est plus simple pour débuter. -->
+    <Nullable>enable</Nullable>
+
+    <!-- Réglages techniques d'Avalonia, à laisser tels quels. -->
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+  </PropertyGroup>
+
+  <!-- Les paquets Avalonia, téléchargés automatiquement au premier "dotnet run". -->
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.0" />               <!-- le cœur d'Avalonia -->
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.0" />       <!-- Windows / macOS / Linux -->
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.0" /> <!-- le thème visuel -->
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.0" />   <!-- la police Inter -->
+  </ItemGroup>
+
+</Project>

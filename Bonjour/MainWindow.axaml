@@ -1,0 +1,46 @@
+<!--
+    MainWindow.axaml : l'INTERFACE de la fenêtre (ce qu'on voit).
+    On décrit les éléments avec des balises, un peu comme en HTML.
+
+    Ce fichier va avec MainWindow.axaml.cs (le code C# associé).
+-->
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Bonjour.MainWindow"
+        Title="Bonjour"
+        Width="400" Height="500"
+        RequestedThemeVariant="Light">
+        
+    <!--
+        x:Class : relie ce fichier à la classe C# "MainWindow".
+        Title   : le texte affiché dans la barre de titre de la fenêtre.
+        Width / Height : la taille de la fenêtre, en pixels.
+    -->
+
+    <!--
+        StackPanel : EMPILE les éléments les uns sous les autres.
+        Margin="20"  : 20 pixels d'espace autour du StackPanel.
+        Spacing="12" : 12 pixels d'espace entre chaque élément.
+    -->
+    <ScrollViewer>
+    <StackPanel Margin="20" Spacing="12" VerticalAlignment="Top" HorizontalAlignment="Center">
+
+         
+        <TextBox x:Name="ChampPrenom" Watermark="Prenom" />
+        <TextBox x:Name="ChampNom" Watermark="Nom" />
+        <DatePicker x:Name="ChampDateNaissance" DayFormat="ddd dd"/>
+        
+        <Button Content="Saluer"
+                IsDefault="True"
+                Click="BoutonSaluer_Click"
+                HorizontalAlignment="Center" />
+
+        
+        <TextBlock x:Name="TexteMessage"
+                TextWrapping="Wrap"
+                FontSize="22"
+                HorizontalAlignment="Left" />
+
+    </StackPanel>
+    </ScrollViewer>
+</Window>
