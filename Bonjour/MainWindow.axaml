@@ -41,14 +41,35 @@
                 TextWrapping="Wrap"
                 FontSize="22"
                 HorizontalAlignment="Left" />
+        
+        
 
     </StackPanel>
-    <WrapPanel ItemSpacing="10" HorizontalAlignment="Center">
-    <!-- degrées to farenheit et l'inverse-->
-     <TextBox x:Name="degreeF" Watermark="°F" MinWidth="25" MaxWidth="50" />
-     <TextBlock Text="==" VerticalAlignment="Center" />
-     <TextBox x:Name="degreeC" Watermark="°C" MinWidth="25" MaxWidth="50" />
+    <TextBlock
+            Text="Conversion celsius/farenheit :"
+            HorizontalAlignment="Left"
+            Margin="5"
+        />
+    <WrapPanel ItemSpacing="10" HorizontalAlignment="Left" Margin="20">
+    
+     <TextBox x:Name="degreeF" Watermark="°F" MinWidth="50" MaxWidth="80" />
+     <TextBlock Text="=" VerticalAlignment="Center" HorizontalAlignment="Center" />
+     <TextBox x:Name="degreeC" Watermark="°C" MinWidth="50" MaxWidth="80" />
+
     </WrapPanel>
+
+    <TextBlock
+        Text="Calculatrice :" 
+        Margin="5"
+        HorizontalAlignment="Left" />
+
+    <WrapPanel ItemSpacing="10" HorizontalAlignment="Left" VerticalAlignment="Center">
+    <TextBox x:Name="Nombre1" Watermark="5" Width="40" Margin="20,20,0,20" />
+    <TextBox x:Name="Operateur" Watermark="*" MaxWidth="25" MinWidth="25" Margin="-5,20" />
+    <TextBox x:Name="Nombre2" Watermark="5" Width="40" Margin="0,20" />
+    <TextBlock Text="=" VerticalAlignment="Center" Margin="0" />
+    <TextBox x:Name="Resultat" Watermark="25" Width="40" Margin="0,20,20,20" IsReadOnly="True" />
+</WrapPanel>
     </StackPanel>
     </ScrollViewer>
 </Window>
