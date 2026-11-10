@@ -13,27 +13,31 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Xml.Serialization;
 using Avalonia.Controls;
 using Avalonia.DesignerSupport.Remote;
 using Avalonia.Interactivity;
 using Avalonia.Metadata;
+using Avalonia.Input;
+
 
 namespace Bonjour;
 
 public partial class MainWindow : Window
 {
     private bool _MiseAJoursEnCours = false;
+    private readonly ObservableCollection<string> _taches = new();
     public MainWindow()
     {
-        // OBLIGATOIRE : crée les éléments décrits dans le .axaml.
-        // Sans cette ligne, la fenêtre reste vide !
         InitializeComponent();
+        ToDoList.ItemsSource = _taches;
         degreeC.PropertyChanged += DegreeCPropertyChanged;
         degreeF.PropertyChanged += DegreeFPropertyChanged;
         Nombre1.PropertyChanged += CalculPropertyChanged;
         Nombre2.PropertyChanged += CalculPropertyChanged;
         Operateur.PropertyChanged += CalculPropertyChanged;
+
     }
     public void ConversionCeliusFarenheit()
     {
@@ -51,9 +55,9 @@ public partial class MainWindow : Window
     public void ConversionFarenheitCelsius()
     {
         string? FarenheitValue = degreeF.Text;
-        if(double.TryParse(FarenheitValue,out double f))
+        if (double.TryParse(FarenheitValue, out double f))
         {
-            double CelsiusValue = ( f - 32 )/ 9 * 5;
+            double CelsiusValue = (f - 32) / 9 * 5;
             degreeC.Text = CelsiusValue.ToString("F2");
         }
         else
@@ -74,10 +78,10 @@ public partial class MainWindow : Window
         {
             _MiseAJoursEnCours = false;
         }
-        
+
     }
     private void DegreeFPropertyChanged(object? sender, Avalonia.AvaloniaPropertyChangedEventArgs e)
-    {   
+    {
         if (e.Property != TextBox.TextProperty) return;
         if (_MiseAJoursEnCours) return;
         _MiseAJoursEnCours = true;
@@ -90,7 +94,6 @@ public partial class MainWindow : Window
             _MiseAJoursEnCours = false;
         }
     }
-
     private void BoutonSaluer_Click(object sender, RoutedEventArgs e)
     {
         // 1. On LIT le texte écrit dans la zone de saisie.
@@ -124,11 +127,10 @@ public partial class MainWindow : Window
         }
         TexteMessage.Text = message;
     }
-    
     private void CalculPropertyChanged(object? sender, Avalonia.AvaloniaPropertyChangedEventArgs e)
     {
         if (e.Property != TextBox.TextProperty) return;
-        Calculatrice();    
+        Calculatrice();
     }
     public void Calculatrice()
     {
@@ -156,6 +158,18 @@ public partial class MainWindow : Window
             }
         }
     }
-    
+    private void ToDoAdd_Click(object? sender, RoutedEventArgs e) => ToDoAdd();
+    private void ToDo_KeyDown(object? sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter) ToDoAdd();
+    }
+    public void ToDoAdd()
+    {
+        string texte = ToDo.Text?.Trim() ?? "";
+        if (texte.Length == 0) return;
+
+        _taches.Add(texte);
+        ToDo.Text = "";
+    }
 }
 
