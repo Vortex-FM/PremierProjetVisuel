@@ -41,7 +41,7 @@ public partial class MainWindow : Window
         if (double.TryParse(CelsiusValue, out double c))
         {
             double FarenheitValue = c * 9 / 5 + 32;
-            degreeF.Text = FarenheitValue.ToString();
+            degreeF.Text = FarenheitValue.ToString("F2");
         }
         else
         {
@@ -54,7 +54,7 @@ public partial class MainWindow : Window
         if(double.TryParse(FarenheitValue,out double f))
         {
             double CelsiusValue = ( f - 32 )/ 9 * 5;
-            degreeC.Text = CelsiusValue.ToString();
+            degreeC.Text = CelsiusValue.ToString("F2");
         }
         else
         {
