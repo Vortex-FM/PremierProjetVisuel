@@ -23,11 +23,30 @@ using Avalonia.Input;
 
 
 namespace Bonjour;
+public class TacheItem : INotifyPropertyChanged
+{
+    private bool _estFaite;
+
+    public string Texte { get; set; } = "";
+
+    public bool EstFaite
+    {
+        get => _estFaite;
+        set
+        {
+            if (_estFaite == value) return;
+            _estFaite = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(EstFaite)));
+        }
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+}
 
 public partial class MainWindow : Window
 {
     private bool _MiseAJoursEnCours = false;
-    private readonly ObservableCollection<string> _taches = new();
+    private readonly ObservableCollection<TacheItem> _taches = new();
     public MainWindow()
     {
         InitializeComponent();
@@ -168,8 +187,13 @@ public partial class MainWindow : Window
         string texte = ToDo.Text?.Trim() ?? "";
         if (texte.Length == 0) return;
 
-        _taches.Add(texte);
+        _taches.Add(new TacheItem { Texte = texte });
         ToDo.Text = "";
+    }
+    private void ToDoDelete_Click(object? sender, RoutedEventArgs e)
+    {
+        if (sender is Button { DataContext: TacheItem tache })
+            _taches.Remove(tache);
     }
 }
 
