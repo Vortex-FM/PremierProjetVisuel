@@ -17,11 +17,12 @@
     
     <ScrollViewer>
         <StackPanel>
-            <WrapPanel Margin=" 10" ItemSpacing="10">
+            <WrapPanel x:Name="Buttons" Margin=" 10" ItemSpacing="10">
                 <Button Content="Salutations" Tag="Salutations" Click="BoutonAffiche_Click" />
                 <Button Content="°F/°C" Tag="Conversion" Click="BoutonAffiche_Click"/>
                 <Button Content="Calc" Tag="Calc" Click="BoutonAffiche_Click"/>
                 <Button Content="ToDoList" Tag="ToDo" Click="BoutonAffiche_Click"/>
+                
             </WrapPanel>
 
             <StackPanel 
