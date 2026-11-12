@@ -20,6 +20,7 @@ using Avalonia.DesignerSupport.Remote;
 using Avalonia.Interactivity;
 using Avalonia.Metadata;
 using Avalonia.Input;
+using Avalonia.Media;
 
 
 namespace Bonjour;
@@ -209,10 +210,11 @@ public partial class MainWindow : Window
     {
         if (sender is not Button { Tag: string cible }) return;
         
-        PanelSalutations.IsVisible = cible == "Salutations";
-        PanelConversion.IsVisible = cible == "Conversion";
-        PanelCalculatrice.IsVisible = cible == "Calc";
-        PanelToDo.IsVisible = cible == "ToDo";
+        PanelSalutations.IsVisible = cible == "Salutations" ? true : false;
+        PanelConversion.IsVisible = cible == "Conversion"? true : false;
+        PanelCalculatrice.IsVisible = cible == "Calc"? true : false;
+        PanelToDo.IsVisible = cible == "ToDo" ? true : false;
+        
     }
 }
 
