@@ -18,6 +18,9 @@
          "nullables"). Cela évite d'avoir à écrire des ? et des ! partout
          dans le code, ce qui est plus simple pour débuter. -->
     <Nullable>enable</Nullable>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 
     <!-- Réglages techniques d'Avalonia, à laisser tels quels. -->
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>

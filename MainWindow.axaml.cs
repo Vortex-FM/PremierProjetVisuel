@@ -115,26 +115,25 @@ public partial class MainWindow : Window
     }
     private void BoutonSaluer_Click(object sender, RoutedEventArgs e)
     {
-        // 1. On LIT le texte écrit dans la zone de saisie.
         string? prenom = ChampPrenom.Text;
         string? Nom = ChampNom.Text;
         DateTimeOffset? naissance = ChampDateNaissance.SelectedDate;
 
 
         string message;
-        if (string.IsNullOrEmpty(prenom) || prenom.Length < 2 || prenom.Length > 30 || string.IsNullOrEmpty(Nom) || Nom.Length < 2 || Nom.Length > 30 || int.TryParse(prenom, out int i) || int.TryParse(Nom, out int o))
+        if (string.IsNullOrEmpty(prenom) || prenom.Length < 3 || prenom.Length > 30 || string.IsNullOrEmpty(Nom) || Nom.Length < 2 || Nom.Length > 30 || int.TryParse(prenom, out int i) || int.TryParse(Nom, out int o))
         {
-            Foreground = Avalonia.Media.Brushes.Red;
+            TexteMessage.Foreground = Avalonia.Media.Brushes.Red;
             message = $"Bonjour, votre nom ou Prénom est invalide.(entre 3 et 30 caractères)";
         }
         else if (naissance is null || naissance.Value.Date > DateTime.Today)
         {
-            Foreground = Avalonia.Media.Brushes.Red;
+            TexteMessage.Foreground = Avalonia.Media.Brushes.Red;
             message = $"Bonjour, votre année de naissance n'est pas valide.";
         }
         else
         {
-            Foreground = Avalonia.Media.Brushes.Black;
+            TexteMessage.Foreground = Avalonia.Media.Brushes.Black;
             DateTime datenaissance = naissance.Value.Date;
             DateTime today = DateTime.Today;
             int age = today.Year - datenaissance.Year;
@@ -142,9 +141,20 @@ public partial class MainWindow : Window
             {
                 age--;
             }
-            message = $"Bonjour, {prenom} {Nom}, vous avez {age} ans.";
+
+            if (age <= 5 || age >= 125)
+            {
+                TexteMessage.Foreground = Avalonia.Media.Brushes.Red;
+                message = $"Bonjour, votre âge n'est pas valide (<5 ou >125)";
+            }
+            else
+            {
+                message = $"Bonjour, {prenom} {Nom}, vous avez {age} ans.";
+            }
         }
         TexteMessage.Text = message;
+
+
     }
     private void CalculPropertyChanged(object? sender, Avalonia.AvaloniaPropertyChangedEventArgs e)
     {
@@ -194,6 +204,15 @@ public partial class MainWindow : Window
     {
         if (sender is Button { DataContext: TacheItem tache })
             _taches.Remove(tache);
+    }
+    private void BoutonAffiche_Click(object? sender, RoutedEventArgs e)
+    {
+        if (sender is not Button { Tag: string cible }) return;
+        
+        PanelSalutations.IsVisible = cible == "Salutations";
+        PanelConversion.IsVisible = cible == "Conversion";
+        PanelCalculatrice.IsVisible = cible == "Calc";
+        PanelToDo.IsVisible = cible == "ToDo";
     }
 }
 
