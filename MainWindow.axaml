@@ -1,165 +1,165 @@
 <!--
-    MainWindow.axaml : l'INTERFACE de la fenêtre (ce qu'on voit).
-    On décrit les éléments avec des balises, un peu comme en HTML.
+MainWindow.axaml : l'INTERFACE de la fenêtre (ce qu'on voit).
+On décrit les éléments avec des balises, un peu comme en HTML.
 
-    Ce fichier va avec MainWindow.axaml.cs (le code C# associé).
+Ce fichier va avec MainWindow.axaml.cs (le code C# associé).
 -->
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="using:Bonjour"
         x:Class="Bonjour.MainWindow"
         Title="Bonjour"
-        Width="400" 
+        Width="400"
         Height="800"
         RequestedThemeVariant="Light">
     <Border Background="#D75EA34B">
-        
-    
-    <ScrollViewer>
-        <StackPanel>
-            <WrapPanel x:Name="Buttons" Margin=" 10" ItemSpacing="10">
-                <Button Content="Salutations" Tag="Salutations" Click="BoutonAffiche_Click" />
-                <Button Content="°F/°C" Tag="Conversion" Click="BoutonAffiche_Click"/>
-                <Button Content="Calc" Tag="Calc" Click="BoutonAffiche_Click"/>
-                <Button Content="ToDoList" Tag="ToDo" Click="BoutonAffiche_Click"/>
-                
-            </WrapPanel>
 
-            <StackPanel 
-                x:Name="PanelSalutations"
-                Margin="20" 
-                Spacing="12" 
-                VerticalAlignment="Top" 
-                HorizontalAlignment="Center"
-                IsVisible="True">   
-                <TextBox x:Name="ChampPrenom" 
-                    Watermark="Prenom" />
-                <TextBox x:Name="ChampNom" 
-                    Watermark="Nom" />
-                <DatePicker x:Name="ChampDateNaissance" 
-                    DayFormat="ddd dd"/>
-                
-                <Button Content="Saluer"
-                        Click="BoutonSaluer_Click"
-                        HorizontalAlignment="Center" />
 
-                
-                <TextBlock x:Name="TexteMessage"
-                        TextWrapping="Wrap"
-                        FontSize="22"
-                        HorizontalAlignment="Center" />
-            </StackPanel>
+        <ScrollViewer>
+            <StackPanel>
+                <WrapPanel x:Name="Buttons" Margin=" 10" ItemSpacing="10">
+                    <Button Content="Salutations" Tag="Salutations" Click="BoutonAffiche_Click" />
+                    <Button Content="°F/°C" Tag="Conversion" Click="BoutonAffiche_Click"/>
+                    <Button Content="Calc" Tag="Calc" Click="BoutonAffiche_Click"/>
+                    <Button Content="ToDoList" Tag="ToDo" Click="BoutonAffiche_Click"/>
 
-            <StackPanel x:Name="PanelConversion"
-                IsVisible="False">
-            <TextBlock 
-                Text="Conversion celsius/farenheit :" 
-                HorizontalAlignment="Center" 
-                Margin="5"/>
-            <WrapPanel 
-                ItemSpacing="10" 
-                HorizontalAlignment="Center" 
-                Margin="20">
-            
-            <TextBox x:Name="degreeF" 
-                Watermark="°F" 
-                MinWidth="50" 
-                MaxWidth="80" />
-            <TextBlock 
-                Text="=" 
-                VerticalAlignment="Center" 
-                HorizontalAlignment="Center" />
-            <TextBox x:Name="degreeC" 
-                Watermark="°C" 
-                MinWidth="50" 
-                MaxWidth="80" />
-            </WrapPanel>
-            </StackPanel>
+                </WrapPanel>
 
-            <StackPanel x:Name="PanelCalculatrice" 
-                IsVisible="False">
-            <TextBlock
-                Text="Calculatrice :" 
-                Margin="5"
-                HorizontalAlignment="Center" />
-            <WrapPanel 
-                ItemSpacing="10" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center">
-                <TextBox x:Name="Nombre1" 
-                    Watermark="5" 
-                    Width="40" 
-                    Margin="20,20,0,20" />
-                <TextBox x:Name="Operateur" 
-                    Watermark="*" 
-                    MaxWidth="25" 
-                    MinWidth="25" 
-                    Margin="-5,20" />
-                <TextBox x:Name="Nombre2" 
-                    Watermark="5" 
-                    Width="40" 
-                    Margin="0,20" />
-                <TextBlock 
-                    Text="=" 
-                    VerticalAlignment="Center" 
-                    Margin="0" />
-                <TextBox x:Name="Resultat" 
-                    Watermark="25" 
-                    Width="40" 
-                    Margin="0,20,20,20" 
-                    IsReadOnly="True" />
-            </WrapPanel>
-            </StackPanel>
+                <StackPanel
+                    x:Name="PanelSalutations"
+                    Margin="20"
+                    Spacing="12"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    IsVisible="True">
+                    <TextBox x:Name="ChampPrenom"
+                             Watermark="Prenom" />
+                    <TextBox x:Name="ChampNom"
+                             Watermark="Nom" />
+                    <DatePicker x:Name="ChampDateNaissance"
+                                DayFormat="ddd dd"/>
 
-            <StackPanel 
-                x:Name="PanelToDo"
-                Margin="10" 
-                Spacing="8" 
-                HorizontalAlignment="Center"
-                IsVisible="False">
-                <TextBlock 
-                    Text="To Do List:"/>
-                <StackPanel 
-                    Orientation="Horizontal" 
-                    Spacing="8">
-                <TextBox x:Name="ToDo" 
-                    Watermark="Tâche"  
-                    Width="200" 
-                    KeyDown="ToDo_KeyDown" />
-                <Button 
-                    Content="Ajouter" 
-                    Click ="ToDoAdd_Click"/>
+                    <Button Content="Saluer"
+                            Click="BoutonSaluer_Click"
+                            HorizontalAlignment="Center" />
+
+
+                    <TextBlock x:Name="TexteMessage"
+                               TextWrapping="Wrap"
+                               FontSize="22"
+                               HorizontalAlignment="Center" />
                 </StackPanel>
-            <ListBox x:Name="ToDoList" 
-                MinHeight="100"
-                MaxHeight="250"
-                Background="#BFFCB8"
-                ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListBox.Styles>
-                <Style Selector="TextBlock.faite">
-                    <Setter Property="TextDecorations" Value="Strikethrough" />
-                    <Setter Property="Opacity" Value="0.5" />
-                </Style>
-                    </ListBox.Styles>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate x:DataType="local:TacheItem">
-                            <Grid ColumnDefinitions="Auto,*,Auto">
-                            <CheckBox Grid.Column="0"
-                                IsChecked="{Binding EstFaite, Mode=TwoWay}" />
-                            <TextBlock Grid.Column="1"
-                                Text="{Binding Texte}"
-                                VerticalAlignment="Center"
-                                TextWrapping="Wrap"
-                                Classes.faite="{Binding EstFaite}" />
-                            <Button Grid.Column="2"
-                               Content="✕"
-                               Click="ToDoDelete_Click" />
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+
+                <StackPanel x:Name="PanelConversion"
+                            IsVisible="False">
+                    <TextBlock
+                        Text="Conversion celsius/farenheit :"
+                        HorizontalAlignment="Center"
+                        Margin="5"/>
+                    <WrapPanel
+                        ItemSpacing="10"
+                        HorizontalAlignment="Center"
+                        Margin="20">
+
+                        <TextBox x:Name="degreeF"
+                                 Watermark="°F"
+                                 MinWidth="50"
+                                 MaxWidth="80" />
+                        <TextBlock
+                            Text="="
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center" />
+                        <TextBox x:Name="degreeC"
+                                 Watermark="°C"
+                                 MinWidth="50"
+                                 MaxWidth="80" />
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="PanelCalculatrice"
+                            IsVisible="False">
+                    <TextBlock
+                        Text="Calculatrice :"
+                        Margin="5"
+                        HorizontalAlignment="Center" />
+                    <WrapPanel
+                        ItemSpacing="10"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <TextBox x:Name="Nombre1"
+                                 Watermark="5"
+                                 Width="40"
+                                 Margin="20,20,0,20" />
+                        <TextBox x:Name="Operateur"
+                                 Watermark="*"
+                                 MaxWidth="25"
+                                 MinWidth="25"
+                                 Margin="-5,20" />
+                        <TextBox x:Name="Nombre2"
+                                 Watermark="5"
+                                 Width="40"
+                                 Margin="0,20" />
+                        <TextBlock
+                            Text="="
+                            VerticalAlignment="Center"
+                            Margin="0" />
+                        <TextBox x:Name="Resultat"
+                                 Watermark="25"
+                                 Width="40"
+                                 Margin="0,20,20,20"
+                                 IsReadOnly="True" />
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel
+                    x:Name="PanelToDo"
+                    Margin="10"
+                    Spacing="8"
+                    HorizontalAlignment="Center"
+                    IsVisible="False">
+                    <TextBlock
+                        Text="To Do List:"/>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Spacing="8">
+                        <TextBox x:Name="ToDo"
+                                 Watermark="Tâche"
+                                 Width="200"
+                                 KeyDown="ToDo_KeyDown" />
+                        <Button
+                            Content="Ajouter"
+                            Click ="ToDoAdd_Click"/>
+                    </StackPanel>
+                    <ListBox x:Name="ToDoList"
+                             MinHeight="100"
+                             MaxHeight="250"
+                             Background="#BFFCB8"
+                             ScrollViewer.VerticalScrollBarVisibility="Auto">
+                        <ListBox.Styles>
+                            <Style Selector="TextBlock.faite">
+                                <Setter Property="TextDecorations" Value="Strikethrough" />
+                                <Setter Property="Opacity" Value="0.5" />
+                            </Style>
+                        </ListBox.Styles>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate x:DataType="local:TacheItem">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                    <CheckBox Grid.Column="0"
+                                              IsChecked="{Binding EstFaite, Mode=TwoWay}" />
+                                    <TextBlock Grid.Column="1"
+                                               Text="{Binding Texte}"
+                                               VerticalAlignment="Center"
+                                               TextWrapping="Wrap"
+                                               Classes.faite="{Binding EstFaite}" />
+                                    <Button Grid.Column="2"
+                                            Content="✕"
+                                            Click="ToDoDelete_Click" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </ScrollViewer>
+        </ScrollViewer>
     </Border>
 </Window>
